@@ -83,9 +83,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (node.children) {
             const childCount = node.children.length;
             node.children.forEach((child, i) => {
-                const nx = x + 180;
+                const nx = x + 200; // Increased spacing for clarity
                 const ny = y + (i - (childCount - 1) / 2) * spacing;
-                layoutTree(child, nx, ny, level + 1, spacing / 1.5);
+                layoutTree(child, nx, ny, level + 1, spacing / 1.6);
             });
         }
     };
@@ -94,20 +94,31 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.beginPath();
         ctx.moveTo(x1, y1);
         ctx.lineTo(x2, y2);
-        ctx.strokeStyle = active ? '#10b981' : 'rgba(255, 255, 255, 0.15)';
-        ctx.lineWidth = active ? 3 : 1;
+        ctx.strokeStyle = active ? '#10b981' : 'rgba(255, 255, 255, 0.1)';
+        ctx.lineWidth = active ? 4 : 1.5;
         ctx.stroke();
+        
+        if (active) {
+            ctx.shadowBlur = 15;
+            ctx.shadowColor = '#10b981';
+            ctx.stroke();
+            ctx.shadowBlur = 0;
+        }
     };
 
     const render = () => {
         const container = canvas.parentElement;
-        if (!container) return;
+        if (!container || container.clientWidth === 0) {
+            requestAnimationFrame(render);
+            return;
+        }
         
         canvas.width = container.clientWidth;
         canvas.height = container.clientHeight;
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        layoutTree(tree, 120, canvas.height / 2, 0, canvas.height * 0.6);
+        // Center the tree
+        layoutTree(tree, 150, canvas.height / 2, 0, canvas.height * 0.5);
 
         // Draw In-Between Connections
         const drawConnections = (node) => {
@@ -131,17 +142,24 @@ document.addEventListener('DOMContentLoaded', () => {
         // Draw Nodes
         const drawNodes = (node) => {
             ctx.beginPath();
-            ctx.arc(node.x, node.y, 8, 0, Math.PI * 2);
-            ctx.fillStyle = '#020617';
-            ctx.strokeStyle = activePath.includes(node) ? '#10b981' : '#334155';
-            ctx.lineWidth = 2;
+            ctx.arc(node.x, node.y, 10, 0, Math.PI * 2);
+            ctx.fillStyle = '#030408';
+            ctx.strokeStyle = activePath.includes(node) ? '#10b981' : 'rgba(255,255,255,0.2)';
+            ctx.lineWidth = 3;
             ctx.fill();
             ctx.stroke();
 
-            ctx.fillStyle = '#fff';
-            ctx.font = '600 10px IBM Plex Mono';
+            if (activePath.includes(node)) {
+                ctx.shadowBlur = 20;
+                ctx.shadowColor = '#10b981';
+                ctx.stroke();
+                ctx.shadowBlur = 0;
+            }
+
+            ctx.fillStyle = activePath.includes(node) ? '#fff' : 'rgba(255,255,255,0.5)';
+            ctx.font = '600 11px IBM Plex Mono';
             ctx.textAlign = 'center';
-            ctx.fillText(node.label, node.x, node.y - 15);
+            ctx.fillText(node.label, node.x, node.y - 20);
 
             if (node.children) node.children.forEach(drawNodes);
         };
@@ -154,7 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const addLog = (text, type = 'process') => {
         const entry = document.createElement('div');
         entry.className = `log-entry ${type}`;
-        entry.innerText = `[${new Date().toLocaleTimeString()}] ${text}`;
+        entry.innerHTML = `<span style="opacity: 0.5">[${new Date().toLocaleTimeString()}]</span> ${text}`;
         deductionLog.appendChild(entry);
         deductionLog.scrollTop = deductionLog.scrollHeight;
     };
@@ -164,14 +182,12 @@ document.addEventListener('DOMContentLoaded', () => {
         isRunning = true;
         activePath = [tree];
         pulses = [];
-        addLog('Inference initialized. Reading Root: Market_Index', 'system');
+        addLog('Symbolic Core engaged. Analyzing Market_Index...', 'system');
         
-        // Simulating logic path
         let current = tree;
-        const path = [tree];
         const step = (node) => {
-            if (!node.children) {
-                addLog(`Deduction finalized: ${node.label}`, 'system');
+            if (!node.children || node.type === 'leaf') {
+                addLog(`Deduction Finalized: ${node.label}`, 'system');
                 confidenceDisplay.innerText = `Confidence: ${node.confidence}%`;
                 predictionValue.innerText = node.label;
                 isRunning = false;
@@ -180,20 +196,17 @@ document.addEventListener('DOMContentLoaded', () => {
             
             setTimeout(() => {
                 const next = node.children[Math.floor(Math.random() * node.children.length)];
-                addLog(`Evaluating Rule: ${next.label || next.rule}`, 'process');
+                addLog(`Matching Rule: ${next.label || next.rule}`, 'process');
                 
-                // Highlight corresponding rule in sidebar
                 const ruleCards = document.querySelectorAll('.rule-card');
                 ruleCards.forEach(c => c.classList.remove('active'));
                 const randomCard = ruleCards[Math.floor(Math.random() * ruleCards.length)];
                 if (randomCard) randomCard.classList.add('active');
 
-                // Spawn Pulse
                 pulses.push(new LogicPulse([{x: node.x, y: node.y}, {x: next.x, y: next.y}]));
-                
                 activePath.push(next);
                 step(next);
-            }, 800);
+            }, 1000);
         };
         
         step(current);
@@ -209,7 +222,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ];
         ruleList.innerHTML = rules.map(r => `
             <div class="rule-card">
-                <span class="gate">FORGE:</span> ${r}
+                <span class="gate">LOGIC_GATE:</span> ${r}
             </div>
         `).join('');
     };
@@ -217,11 +230,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // 5. Global Actions
     runInferenceBtn.addEventListener('click', runInference);
     resetBtn.addEventListener('click', () => {
+        isRunning = false;
         activePath = [];
         pulses = [];
         predictionValue.innerText = 'PENDING';
         confidenceDisplay.innerText = 'Confidence: --%';
-        addLog('Logic space reset.', 'system');
+        deductionLog.innerHTML = '<div class="log-entry system">Engine reset. Logic space cleared.</div>';
+        const ruleCards = document.querySelectorAll('.rule-card');
+        ruleCards.forEach(c => c.classList.remove('active'));
     });
 
     window.addEventListener('resize', render);

@@ -1,11 +1,10 @@
-:root {
     --bg: #020617;
     --panel: rgba(15, 23, 42, 0.7);
     --accent: #10b981;
     --accent-glow: rgba(16, 185, 129, 0.3);
     --text: #f8fafc;
     --text-dim: #94a3b8;
-    --border: rgba(255, 255, 255, 0.06);
+    --border: rgba(255, 255, 255, 0.1);
     --node-bg: #1e293b;
 }
 
@@ -90,12 +89,39 @@ body {
 .panel-header .status { font-size: 0.6rem; color: var(--text-dim); border: 1px solid var(--border); padding: 0.2rem 0.5rem; border-radius: 4px; }
 
 .rule-list { flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 0.75rem; }
-.rule-card { background: rgba(0, 0, 0, 0.2); border: 1px solid var(--border); padding: 1rem; border-radius: 8px; font-size: 0.8rem; }
+.rule-card { 
+    background: rgba(255, 255, 255, 0.02); 
+    border: 1px solid var(--border); 
+    padding: 1.25rem; 
+    border-radius: 12px; 
+    font-size: 0.8rem; 
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.rule-card.active { 
+    background: rgba(16, 185, 129, 0.1); 
+    border-color: var(--accent); 
+    transform: scale(1.02);
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.1);
+}
 .rule-card .gate { color: var(--accent); font-weight: 700; margin-right: 0.25rem; }
 
 .active-config { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
 .config-label { font-size: 0.7rem; color: var(--text-dim); margin-bottom: 0.5rem; }
-select { width: 100%; background: #000; border: 1px solid var(--border); color: white; padding: 0.5rem; border-radius: 4px; outline: none; }
+select { 
+    width: 100%; 
+    background: rgba(0, 0, 0, 0.3); 
+    border: 1px solid var(--border); 
+    color: white; 
+    padding: 0.75rem; 
+    border-radius: 8px; 
+    outline: none; 
+    cursor: pointer;
+    font-size: 0.8rem;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+}
 
 /* Decision Stage */
 .decision-stage { flex: 1; }
@@ -103,7 +129,14 @@ select { width: 100%; background: #000; border: 1px solid var(--border); color: 
 .breadcrumb { font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; color: var(--text-dim); }
 .confidence { font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; color: var(--accent); font-weight: 700; }
 
-.canvas-area { flex: 1; position: relative; background: #010409; }
+.canvas-area { 
+    flex: 1; 
+    position: relative; 
+    background: #010409; 
+    background-image: 
+        radial-gradient(circle at 2px 2px, rgba(255,255,255,0.03) 1px, transparent 0);
+    background-size: 40px 40px;
+}
 #logicCanvas { width: 100%; height: 100%; }
 
 .stage-footer { padding: 1rem; border-top: 1px solid var(--border); }
@@ -116,8 +149,8 @@ select { width: 100%; background: #000; border: 1px solid var(--border); color: 
 
 /* Log Panel */
 .log-panel { width: 340px; padding: 1.5rem; }
-.log-viewport { flex: 1; overflow-y: auto; font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; padding: 0.5rem 0; }
-.log-entry { margin-bottom: 0.75rem; line-height: 1.4; color: var(--text-dim); border-left: 2px solid var(--border); padding-left: 0.75rem; }
+.log-viewport { flex: 1; overflow-y: auto; font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; padding: 1rem 0; }
+.log-entry { margin-bottom: 1rem; line-height: 1.6; color: var(--text-dim); border-left: 2px solid var(--border); padding-left: 1rem; }
 .log-entry.system { color: var(--accent); font-weight: 600; }
 .log-entry.process { color: #fff; }
 

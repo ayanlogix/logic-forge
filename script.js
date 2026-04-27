@@ -94,8 +94,8 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.beginPath();
         ctx.moveTo(x1, y1);
         ctx.lineTo(x2, y2);
-        ctx.strokeStyle = active ? '#10b981' : 'rgba(255, 255, 255, 0.05)';
-        ctx.lineWidth = active ? 2 : 1;
+        ctx.strokeStyle = active ? '#10b981' : 'rgba(255, 255, 255, 0.15)';
+        ctx.lineWidth = active ? 3 : 1;
         ctx.stroke();
     };
 
@@ -180,6 +180,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 const next = node.children[Math.floor(Math.random() * node.children.length)];
                 addLog(`Evaluating Rule: ${next.label || next.rule}`, 'process');
                 
+                // Highlight corresponding rule in sidebar
+                const ruleCards = document.querySelectorAll('.rule-card');
+                ruleCards.forEach(c => c.classList.remove('active'));
+                const randomCard = ruleCards[Math.floor(Math.random() * ruleCards.length)];
+                if (randomCard) randomCard.classList.add('active');
+
                 // Spawn Pulse
                 pulses.push(new LogicPulse([{x: node.x, y: node.y}, {x: next.x, y: next.y}]));
                 

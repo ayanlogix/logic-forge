@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logic-Forge | Symbolic AI Deductive Engine</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Outfit:wght@300;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%23020617%22/><path d=%22M20 20H80V80H20V20ZM50 20V80M20 50H80%22 stroke=%22%2310b981%22 stroke-width=%224%22/></svg>">
+</head>
+<body>
+    <div class="forge-container">
+        <!-- Header: The Inference Lab -->
+        <header class="forge-header">
+            <div class="brand">
+                <div class="logo-mark">
+                    <span class="gate"></span>
+                </div>
+                <h1>Logic-Forge</h1>
+            </div>
+            <div class="engine-controls">
+                <button id="runInferenceBtn" class="control-btn primary">Execute Deduction</button>
+                <button id="resetBtn" class="control-btn secondary">Reset Logic</button>
+            </div>
+        </header>
+
+        <div class="workspace">
+            <!-- Sidebar: Rule Builder -->
+            <aside class="rules-panel glass-panel">
+                <div class="panel-header">
+                    <span class="label">Symbolic Rule Set</span>
+                    <span class="status">v2.0.4</span>
+                </div>
+                <div id="ruleList" class="rule-list">
+                    <!-- Dynamic Rule Cards -->
+                </div>
+                <div class="active-config">
+                    <div class="config-label">Inference Mode</div>
+                    <select id="inferenceMode">
+                        <option value="greedy">Greedy Search</option>
+                        <option value="heuristic">Heuristic Path</option>
+                        <option value="exhaustive">Exhaustive Trace</option>
+                    </select>
+                </div>
+            </aside>
+
+            <!-- Center: The Decision Stage -->
+            <main class="decision-stage glass-panel">
+                <div class="stage-header">
+                    <div class="breadcrumb">Graph / Topology / Decision_Tree</div>
+                    <div id="confidenceDisplay" class="confidence">Confidence: --%</div>
+                </div>
+                <div class="canvas-area">
+                    <canvas id="logicCanvas"></canvas>
+                </div>
+                <div class="stage-footer">
+                    <div class="legend">
+                        <span class="item"><i class="dot input"></i> Input</span>
+                        <span class="item"><i class="dot logic"></i> Decision</span>
+                        <span class="item"><i class="dot leaf"></i> Leaf</span>
+                    </div>
+                </div>
+            </main>
+
+            <!-- Right: Deduction Log -->
+            <aside class="log-panel glass-panel">
+                <div class="panel-header">
+                    <span class="label">Deduction Trace</span>
+                </div>
+                <div id="deductionLog" class="log-viewport">
+                    <div class="log-entry system">
+                        Engine initialized. Ready for symbolic induction.
+                    </div>
+                </div>
+                <div class="prediction-card">
+                    <div class="card-label">Final Outcome</div>
+                    <div id="predictionValue" class="prediction-value">PENDING</div>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

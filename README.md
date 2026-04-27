@@ -1,8 +1,8 @@
 # 🧠 Logic-Forge | Symbolic AI Deductive Engine
 
 ![Status](https://img.shields.io/badge/STATUS-OPERATIONAL-success?style=for-the-badge&logo=statuspage)
-![License](https://img.shields.io/badge/LICENSE-MIT-blue?style=for-the-badge)
-![Tech](https://img.shields.io/badge/TECH-ALGORITHMIC-red?style=for-the-badge)
+![Deployment](https://img.shields.io/badge/DEPLOYMENT-ACTIVE-blue?style=for-the-badge&logo=vercel)
+![License](https://img.shields.io/badge/LICENSE-MIT-blueviolet?style=for-the-badge)
 
 **Logic-Forge** is a high-performance deductive reasoning engine designed for symbolic AI processing and interactive inference pathing. It provides a visual and computational workspace for exploring complex logic structures and search algorithms.
 

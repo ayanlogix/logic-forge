@@ -1,7 +1,7 @@
 # Logic-Forge | Symbolic AI Deductive Engine
 
-![Logic-Forge Preview](https://img.shields.io/badge/Ayanlogix-Symbolic_AI-emerald?style=for-the-badge)
-![Private](https://img.shields.io/badge/Status-Private-red?style=for-the-badge)
+![Operational](https://img.shields.io/badge/Status-Operational-brightgreen?style=for-the-badge)
+[![Live Demo](https://img.shields.io/badge/Live_Demo-GitHub_Pages-blue?style=for-the-badge)](https://ayanlogix.github.io/logic-forge/)
 
 **Logic-Forge** is a high-performance symbolic AI engine designed for deductive reasoning and decision tree visualization. It allows users to build symbolic rule sets and execute inference patterns using various search algorithms (Greedy, Heuristic, Exhaustive).
 

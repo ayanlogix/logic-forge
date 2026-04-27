@@ -101,11 +101,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const render = () => {
         const container = canvas.parentElement;
+        if (!container) return;
+        
         canvas.width = container.clientWidth;
         canvas.height = container.clientHeight;
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        layoutTree(tree, 100, canvas.height / 2, 0, 300);
+        layoutTree(tree, 120, canvas.height / 2, 0, canvas.height * 0.6);
 
         // Draw In-Between Connections
         const drawConnections = (node) => {

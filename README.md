@@ -1,39 +1,59 @@
-# Logic-Forge | Symbolic AI Deductive Engine
+# 🧠 Logic-Forge | Symbolic AI Deductive Engine
 
-![Operational](https://img.shields.io/badge/Status-Operational-brightgreen?style=for-the-badge)
-[![Live Demo](https://img.shields.io/badge/Live_Demo-GitHub_Pages-blue?style=for-the-badge)](https://ayanlogix.github.io/logic-forge/)
+![Status](https://img.shields.io/badge/STATUS-OPERATIONAL-success?style=for-the-badge&logo=statuspage)
+![License](https://img.shields.io/badge/LICENSE-MIT-blue?style=for-the-badge)
+![Tech](https://img.shields.io/badge/TECH-ALGORITHMIC-red?style=for-the-badge)
 
-**Logic-Forge** is a high-performance symbolic AI engine designed for deductive reasoning and decision tree visualization. It allows users to build symbolic rule sets and execute inference patterns using various search algorithms (Greedy, Heuristic, Exhaustive).
+**Logic-Forge** is a high-performance deductive reasoning engine designed for symbolic AI processing and interactive inference pathing. It provides a visual and computational workspace for exploring complex logic structures and search algorithms.
 
-## 🚀 Key Features
-- **Symbolic Rule Builder**: Define complex logical predicates and rules for the deductive engine.
-- **Inference Visualization**: Real-time rendering of decision trees and graph topologies on a high-performance canvas.
-- **Deduction Trace**: Granular logging of the engine's logical pathing and induction steps.
-- **Multiple Inference Modes**: Toggle between Greedy Search, Heuristic Pathing, and Exhaustive Traces to optimize reasoning.
-- **Premium Glass UI**: A professional, dark-themed interface built for data-heavy symbolic logic tasks.
+[🚀 LIVE DEMO](https://ayanlogix.github.io/logic-forge/) | [🔗 Portfolio](https://ayanlogix.dev)
 
-## 🛠️ Technical Stack
-- **Frontend**: Vanilla JavaScript (ES6+), HTML5, CSS3
-- **Graphics**: Canvas API for dynamic tree and graph rendering
-- **Logic**: Custom symbolic reasoning engine with support for forward and backward chaining patterns
-- **Typography**: IBM Plex Mono & Outfit for a precise, engineering-focused look
+---
 
-## 📁 Project Structure
-```bash
-logic-forge/
-├── public/
-│   ├── index.html   # Main inference lab UI
-│   ├── style.css    # Forge & Glass-panel styling
-│   └── script.js    # Symbolic engine & canvas logic
-└── README.md        # Documentation
-```
+## 🔬 Core Architecture
 
-## 📋 Installation
+Logic-Forge implements a robust **Inference Orchestration Layer** capable of processing symbolic logic and visualizing search heuristic patterns.
+
+### Key Technical Pillars:
+*   **Symbolic Deductive Engine**: A modular logic processor designed to handle complex propositional branching and rule-based inference.
+*   **Search Pattern Visualizer**: Integrated tracing for **Greedy**, **Heuristic**, and **Exhaustive** search patterns, allowing for real-time auditing of algorithm efficiency.
+*   **Interactive Inference Pathing**: A custom UX implementation for tracing decision trees and logical deductions with high-fidelity visual feedback.
+*   **Heuristic Optimization**: Built-in cost-function analysis for evaluating search paths in multi-state environments.
+
+---
+
+## 🛠️ Tech Stack
+
+*   **Logic Engine**: Vanilla JavaScript (ES6+) with optimized state-management for complex branching.
+*   **Visualization**: Custom CSS-orchestrated node structures with real-time DOM-diffing for path updates.
+*   **Architecture**: Modular design pattern for easy extension of symbolic rule-sets.
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+*   A modern web browser with ES6 support.
+*   Zero external dependencies.
+
+### Installation
 1. Clone the repository:
    ```bash
    git clone https://github.com/ayanlogix/logic-forge.git
    ```
-2. Open `public/index.html` in your browser.
+2. Navigate to the project directory:
+   ```bash
+   cd logic-forge
+   ```
+3. Open `index.html` in your browser.
 
 ---
-*Developed by **Ayan Hussain (Ayanlogix)** - Forging the logic of tomorrow.*
+
+## 🤝 Contributing
+We welcome contributions to the Logic-Forge engine! Please see our [CONTRIBUTING.md](CONTRIBUTING.md) for details.
+
+## 📄 License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+**Crafted with precision by [Ayan Hussain](https://ayanlogix.dev)**
